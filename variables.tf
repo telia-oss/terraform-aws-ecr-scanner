@@ -53,7 +53,7 @@ variable "slack_webhook_url" {
 variable "risk_levels" {
   description = "Risk level to be reported on slack, available options: HIGH, MEDIUM, INFORMATIONAL, LOW, CRITICAL, UNDEFINED"
   type        = string
-  default    = "HIGH, CRITICAL"
+  default     = "HIGH, CRITICAL"
 }
 
 variable "subnet_ids" {
