@@ -1,0 +1,20 @@
+name: workflow
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install Terraform
+      uses: hashicorp/setup-terraform@v1 
+      with: { terraform_version: 0.14.10 }
+
+    - name: Install Taskfile
+      run: curl -sL https://taskfile.dev/install.sh | sh
+
+    - name: Run tests
+      run: ./bin/task test
