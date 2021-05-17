@@ -56,15 +56,15 @@ module "ecr-scan-trigger-lambda" {
   handler = "lambda_function.lambda_handler"
   runtime = "python3.6"
 
-  subnet_ids = var.subnet_ids
+  subnet_ids         = var.subnet_ids
   security_group_ids = var.security_group_ids
 
 
   tags = merge(
     var.tags,
-    map("Name", var.global_name),
-    map("Project", var.global_project),
-    map("Environment", var.local_environment)
+    tomap({ "Name" = var.global_name }),
+    tomap({ "Project" = var.global_project }),
+    tomap({ "Environment" = var.local_environment })
   )
 }
 
@@ -79,7 +79,7 @@ module "ecr-scan-notify-lambda" {
   handler = "lambda_function.lambda_handler"
   runtime = "python3.6"
 
-  subnet_ids = var.subnet_ids
+  subnet_ids         = var.subnet_ids
   security_group_ids = var.security_group_ids
 
   environment = {
@@ -93,9 +93,9 @@ module "ecr-scan-notify-lambda" {
 
   tags = merge(
     var.tags,
-    map("Name", var.global_name),
-    map("Project", var.global_project),
-    map("Environment", var.local_environment)
+    tomap({ "Name" = var.global_name }),
+    tomap({ "Project" = var.global_project }),
+    tomap({ "Environment" = var.local_environment })
   )
 }
 
