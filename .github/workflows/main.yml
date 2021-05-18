@@ -18,3 +18,5 @@ jobs:
 
     - name: Run tests
       run: ./bin/task test
+      
+      
